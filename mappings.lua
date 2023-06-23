@@ -1,3 +1,5 @@
+-- TODO: Add mappings for the following
+-- 1. Between buffers
 -- Mapping data with "desc" stored directly by vim.keymap.set().
 --
 -- Please use this mappings table to set keyboard mapping since this is the
@@ -11,7 +13,9 @@ return {
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(bufnr) end)
+        require("astronvim.utils.status").heirline.buffer_picker(
+          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+        )
       end,
       desc = "Pick to close",
     },
@@ -19,7 +23,20 @@ return {
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
-    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
+    -- undo control z
+    ["<C-z>"] = { ":undo<cr>", desc = "Undo" },
+    -- go to the end of the line control right arrow
+    ["<C-Right>"] = { "$", desc = "End of line" },
+
+    -- go to the beginning of the line control left arrow
+    ["<C-Left>"] = { "0", desc = "Beginning of line" },
+
+    -- go to the bottom of the file
+    ["<C-Down>"] = { ":$<cr>", desc = "Bottom of file" },
+
+    -- go to the top of the file
+    ["<C-Up>"] = { ":0<cr>", desc = "Top of file" },
   },
   t = {
     -- setting a mapping to false will disable it

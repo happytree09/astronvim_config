@@ -1,11 +1,9 @@
 -- TODO: Add mappings for the following
--- 1. Between buffers
+-- 1. Add for hovering over the function and getting the documentation
 
 return {
   -- Normal mode
   n = {
-    -- second key is the lefthand side of the map
-    -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
@@ -15,8 +13,6 @@ return {
       end,
       desc = "Pick to close",
     },
-    -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
 
     -- navigate to buffer using shift + right arrow
@@ -57,6 +53,9 @@ return {
 
     -- go the insert mode space space
     ["<space><space>"] = { "i", desc = "Edit mode" },
+
+    -- open floating terminal using control keypad 0
+    ["<C-x>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Open floating terminal" },
   },
 
   -- Edit mode sample
@@ -92,5 +91,8 @@ return {
   t = {
     -- setting a mapping to false will disable it
     ["<esc>"] = false,
+
+    -- close terminal using control x
+    ["<C-x>"] = { "<cmd>ToggleTerm<cr>", desc = "Close terminal" },
   },
 }
